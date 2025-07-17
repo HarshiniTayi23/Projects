@@ -63,3 +63,50 @@ By integrating both statistical and machine learning approaches, the hybrid mode
 ```bash
 git clone https://github.com/yourusername/your-repo.git
 cd projects/academic/Hybrid_time_series
+```
+###2. Install Required Libraries
+```bash
+pip install -r requirements.txt
+```
+###3. Project Dependencies
+requirements.txt
+```
+pandas==2.2.2
+numpy==1.25.2
+scikit-learn==1.3.0
+statsmodels==0.14.0
+xgboost==2.0.3
+matplotlib==3.7.2
+```
+###4. Data
+Place your dataset inside the data/ folder.
+data/Hybrid_time_series_data.csv
+
+▶️ Running the Project
+Simply execute:
+
+```bash
+python main.py
+```
+This will:
+
+- Preprocess the data
+-Train the ARIMA and XGBoost models
+-Generate the hybrid forecast
+-Display evaluation metrics
+-Plot actual vs forecasted values
+
+📈 Performance Metrics
+| Metric |	Description |
+-------------------------
+| RMSE	| Measures the prediction error magnitude |
+| MAPE | Indicates the average error percentage |
+
+
+👩‍💻 Author
+Tayi Sri Harshini
+
+GitHub: https://github.com/HarshiniTayi23
+LinkedIn:
+Email: sriharshini.tayi@gmail.com
+
