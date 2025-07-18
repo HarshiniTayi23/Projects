@@ -61,7 +61,7 @@ By integrating both statistical and machine learning approaches, the hybrid mode
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/HarshiniTayi23/projects.git
 cd projects/academic/Hybrid_time_series
 ```
 ### 2. Install Required Libraries
