@@ -1,99 +1,113 @@
-# Wild Blueberry Yield Prediction
+# 🫐 Wild Blueberry Yield Prediction
 
-This project implements a machine learning pipeline to predict the yield of wild blueberries based on agricultural, meteorological, and pollination data. The data pipeline includes data preprocessing, dimensionality reduction using PCA, training a Random Forest Regressor, and evaluating model performance.
+This project implements a complete **machine learning pipeline** to predict the **yield of wild blueberries** 🍇 based on agricultural, meteorological, and pollination data. It covers preprocessing, **dimensionality reduction (PCA)**, model training using **Random Forest Regressor**, and performance evaluation with visualizations 📊.
 
-## Project Structure
+---
 
-├── main.py # Entry point to run the pipeline
+## 📁 Project Structure
+
+├── main.py # 🚀 Entry point to run the pipeline
 ├── src/
-│ ├── data_loader.py # Functions for data loading
-│ ├── preprocessing.py # Data preprocessing and PCA transformations
-│ └── model.py # Model training, evaluation, and visualization
-└── README.md # Project documentation
+│ ├── data_loader.py # 📦 Functions for data loading
+│ ├── preprocessing.py # 🧹 Data cleaning and PCA transformation
+│ └── model.py # 🧠 Model training, evaluation, and plots
+└── README.md # 📄 Project documentation
 
-## Dataset
 
-- **Source:** Kaggle - Wild Blueberry Yield Prediction Dataset
-- **Features include:**
+---
 
-  - **Pollinators:** honeybee, bumbles, andrena, osmia
-  - **Weather Metrics:** Max/Min/Average of Upper and Lower Temperature Ranges, Rainfall Days
-  - **Plant Data:** clonesize, fruitset, fruitmass, seeds
-  - **Target:** yield
+## 📊 Dataset
 
-- **Shape:** 777 samples, 17 features (after cleaning)
+- **📌 Source:** Kaggle – *Wild Blueberry Yield Prediction Dataset*
+- **🧬 Features:**
 
-## Requirements
+  - **Pollinators:** `honeybee`, `bumbles`, `andrena`, `osmia` 🐝  
+  - **Weather Metrics:** Max/Min/Avg Upper & Lower Temps 🌡️, Rainfall Days 🌧️  
+  - **Plant Data:** `clonesize`, `fruitset`, `fruitmass`, `seeds` 🌱  
+  - **🎯 Target:** `yield`
 
-Python 3.x
-pandas
-numpy
-scikit-learn
-seaborn
-matplotlib
+- **🧾 Shape:** `777 samples`, `17 features` (after cleaning)
 
+---
+
+## 🧰 Requirements
+
+- Python 3.x  
+- pandas  
+- numpy  
+- scikit-learn  
+- seaborn  
+- matplotlib  
+
+```bash
 pip install pandas numpy scikit-learn seaborn matplotlib
+```
 
-pgsql
-Copy code
-
-## Usage
-
-Update `DATA_PATH` in `main.py` with the path to your CSV dataset.
-
+###▶️ Usage
+1. Update DATA_PATH in main.py:
 ```python
 DATA_PATH = 'path_to_data.csv'
-Then run:
-
-css
-Copy code
-python main.py
-Pipeline Overview
-Data Loading: Load and clean data, dropping irrelevant columns.
-
-Data Splitting: Split dataset into training and test sets (70:30 split).
-
-Feature Engineering:
-
-PCA on fruit-related features (fruitset, fruitmass, seeds)
-
-PCA on meteorological temperature features
-
-PCA on rainfall features
-
-Model Training: Random Forest Regressor tuned via RandomizedSearchCV.
-
-Evaluation:
-
-Training MSE and R²
-
-Feature importance visualization
-
-Predicted vs Actual yield scatter plot
-
-Results
-Best Hyperparameters
-bash
-Copy code
-{'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_depth': 10}
-Model Performance
-yaml
-Copy code
-Mean Squared Error (MSE) - Training: 5196.56
-R² - Training: 0.997
-Key Features
-Feature importance ranked the following as most significant:
-
-clonesize
-
-pca_feature (fruit metrics)
-
-pca_temperature (weather metrics)
-
-pca_rain (rainfall metrics)
-
-Visual Outputs
-Feature Importance Plot: Visual representation of feature contributions.
-
-Actual vs Predicted Plot: Displays prediction accuracy.
 ```
+2. Run the pipeline:
+```bash
+python main.py
+```
+---
+
+###🔄 Pipeline Overview
+
+-📥 Data Loading: Load and clean dataset, remove irrelevant columns
+
+-🧪 Data Splitting: 70:30 train-test split
+
+###⚙️ Feature Engineering (PCA):
+
+-PCA on fruit-related features: fruitset, fruitmass, seeds
+
+-PCA on temperature-related features
+
+-PCA on rainfall-related features
+
+🌲 Model Training: Random Forest Regressor with hyperparameter tuning via RandomizedSearchCV
+
+##📈 Evaluation:
+
+-Training MSE and R²
+
+-Feature importance visualization
+
+-Actual vs Predicted scatter plot
+
+###🏁 Results
+##✅ Best Hyperparameters
+```json
+{
+  "n_estimators": 200,
+  "min_samples_split": 2,
+  "min_samples_leaf": 1,
+  "max_depth": 10
+}
+```
+##📉 Model Performance
+
+```yaml
+Mean Squared Error (Training): 5196.56
+R² (Training): 0.997
+```
+
+###🌟 Key Features by Importance
+-clonesize
+
+-pca_feature (fruit metrics)
+
+-pca_temperature (weather metrics)
+
+-pca_rain (rainfall metrics)
+
+---
+
+###🖼️ Visual Outputs
+📊 Feature Importance Plot – Shows key contributors to prediction
+
+🔵 Actual vs Predicted Plot – Highlights prediction accuracy
+
