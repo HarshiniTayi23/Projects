@@ -7,13 +7,21 @@ This project implements a complete **machine learning pipeline** to predict the 
 ## 📁 Project Structure
 
 ├── main.py # 🚀 Entry point to run the pipeline
+
 ├── Data/ 
+
 │ ├── WildBlueberryPollinationSimulationData.csv
+
 ├── src/
+
 │ ├── data_loader.py # 📦 Functions for data loading
+
 │ ├── preprocessing.py # 🧹 Data cleaning and PCA transformation
+
 │ └── model.py # 🧠 Model training, evaluation, and plots
+
 ├── requirements.txt
+
 └── README.md # 📄 Project documentation
 
 
