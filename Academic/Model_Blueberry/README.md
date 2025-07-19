@@ -7,10 +7,15 @@ This project implements a complete **machine learning pipeline** to predict the 
 ## 📁 Project Structure
 
 ├── main.py # 🚀 Entry point to run the pipeline
+
 ├── src/
+
 │ ├── data_loader.py # 📦 Functions for data loading
+
 │ ├── preprocessing.py # 🧹 Data cleaning and PCA transformation
+
 │ └── model.py # 🧠 Model training, evaluation, and plots
+
 └── README.md # 📄 Project documentation
 
 
@@ -42,8 +47,8 @@ This project implements a complete **machine learning pipeline** to predict the 
 ```bash
 pip install pandas numpy scikit-learn seaborn matplotlib
 ```
-
-###▶️ Usage
+---
+### ▶️ Usage
 1. Update DATA_PATH in main.py:
 ```python
 DATA_PATH = 'path_to_data.csv'
@@ -54,13 +59,14 @@ python main.py
 ```
 ---
 
-###🔄 Pipeline Overview
+### 🔄 Pipeline Overview
 
 -📥 Data Loading: Load and clean dataset, remove irrelevant columns
 
 -🧪 Data Splitting: 70:30 train-test split
+---
 
-###⚙️ Feature Engineering (PCA):
+### ⚙️ Feature Engineering (PCA):
 
 -PCA on fruit-related features: fruitset, fruitmass, seeds
 
@@ -70,7 +76,7 @@ python main.py
 
 🌲 Model Training: Random Forest Regressor with hyperparameter tuning via RandomizedSearchCV
 
-##📈 Evaluation:
+## 📈 Evaluation:
 
 -Training MSE and R²
 
@@ -78,8 +84,8 @@ python main.py
 
 -Actual vs Predicted scatter plot
 
-###🏁 Results
-##✅ Best Hyperparameters
+### 🏁 Results
+## ✅ Best Hyperparameters
 ```json
 {
   "n_estimators": 200,
@@ -88,14 +94,14 @@ python main.py
   "max_depth": 10
 }
 ```
-##📉 Model Performance
+## 📉 Model Performance
 
 ```yaml
 Mean Squared Error (Training): 5196.56
 R² (Training): 0.997
 ```
 
-###🌟 Key Features by Importance
+### 🌟 Key Features by Importance
 -clonesize
 
 -pca_feature (fruit metrics)
@@ -106,7 +112,7 @@ R² (Training): 0.997
 
 ---
 
-###🖼️ Visual Outputs
+### 🖼️ Visual Outputs
 📊 Feature Importance Plot – Shows key contributors to prediction
 
 🔵 Actual vs Predicted Plot – Highlights prediction accuracy
