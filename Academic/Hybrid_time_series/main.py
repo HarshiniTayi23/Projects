@@ -5,9 +5,9 @@ from xgboost_model import prepare_features, train_xgboost, predict_xgboost
 from hybrid_forecasting import combine_forecasts
 from evaluation import evaluate_model
 
-FILE_PATH = 'path_to_your_csv.csv'
+file_path = 'C:/Users/tayis/OneDrive/Desktop/Projects/Academic/Hybrid_time_series/Data/hybrid_time_series_data.csv'
 
-series = preprocess_data(FILE_PATH)
+series = preprocess_data(file_path)
 
 # Train ARIMA
 arima_model = train_arima(series)
