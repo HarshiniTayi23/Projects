@@ -1,0 +1,18 @@
+Column,Description
+Store,Unique store identifier (1-1115)
+Date,Date of sales record
+Sales,Daily revenue (target variable)
+Customers,Number of customers that day
+Open,"Store open status (0=closed, 1=open)"
+Promo,"Daily promotion active (0=no, 1=yes)"
+StateHoliday,"Public holiday (0=no, a=public, b=Easter, c=Christmas)"
+SchoolHoliday,"School holiday indicator (0=no, 1=yes)"
+StoreType,"Store format (a,b,c,d)"
+Assortment,"Product assortment (a=basic, b=extra, c=extended)"
+CompetitionDistance,Distance to nearest competitor (meters)
+CompetitionOpenSinceMonth,Month competitor opened
+CompetitionOpenSinceYear,Year competitor opened
+Promo2,"Continuous promotion participation (0=no, 1=yes)"
+Promo2SinceWeek,Week continuous promotion started
+Promo2SinceYear,Year continuous promotion started
+PromoInterval,Months when Promo2 is active
