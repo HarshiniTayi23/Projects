@@ -368,23 +368,9 @@ class AgenticTrendAnalysisPipeline:
     
     def _demonstrate_agentic_features(self):
         """Demonstrate key agentic AI features"""
-        print(f"   Multi-Agent Architecture:")
-        print(f"     • Discovery Agent: Rule-based + Clustering + N-gram analysis")
-        print(f"     • Classification Agent: High-recall review classification")
-        print(f"     • Consolidation Agent: 85% similarity threshold merging")
-        print(f"     • Quality Assessment Agent: Topic quality validation")
-        
-        print(f"\n   High-Recall Features:")
-        print(f"     • Semantic pattern matching for seed topics")
-        print(f"     • Multiple clustering algorithms for robustness")
-        print(f"     • N-gram pattern discovery for emerging topics")
-        print(f"     • Advanced similarity measures for consolidation")
-        
-        print(f"\n   Smart Consolidation:")
-        print(f"     • Lexical similarity (word overlap, edit distance)")
-        print(f"     • Semantic similarity (domain taxonomy)")
-        print(f"     • Vector similarity (TF-IDF based)")
-        print(f"     • Context similarity (method, confidence, support)")
+        print(f"   Multi-Agent Architecture")
+        print(f"\n   High-Recall Features")
+        print(f"\n   Smart Consolidation")
 
 def main():
     parser = argparse.ArgumentParser(description='Agentic AI Trend Analysis Pipeline')
