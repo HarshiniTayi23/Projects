@@ -7,7 +7,7 @@ import random
 from .database_setup import DatabaseManager
 
 class DataIngestion:
-    def __init__(self, app_id="com.application.zomato", db_manager=None):
+    def __init__(self, app_id="com.swiggy.android", db_manager=None):
         self.app_id = app_id  # Swiggy app ID
         self.db_manager = db_manager or DatabaseManager()
         
