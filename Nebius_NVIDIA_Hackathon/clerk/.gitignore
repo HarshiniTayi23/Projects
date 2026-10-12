@@ -1,0 +1,17 @@
+.env
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+backend/evals/results/*.json
+*.egg-info/
+build/

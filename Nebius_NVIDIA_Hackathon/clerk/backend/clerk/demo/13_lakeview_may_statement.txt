@@ -1,0 +1,17 @@
+LAKEVIEW APARTMENTS
+MONTHLY STATEMENT
+Account: LV-12B
+Customer: Maria Alvarez
+Statement date: 2026-05-01
+Due date: 2026-05-05
+
+CHARGES
+Date       | Description | Qty | Unit price | Amount
+2026-05-01 | Unit 12B rent | 1 | 1,450.00 | 1,450.00
+2026-05-01 | Parking space | 1 | 75.00 | 75.00
+2026-04-01 | Pet deposit installment 1 of 2 | 1 | 150.00 | 150.00
+2026-05-01 | Pet deposit installment 2 of 2 | 1 | 150.00 | 150.00
+2026-04-20 | Late payment fee | 1 | 40.00 | 40.00
+
+Subtotal: 1,865.00
+TOTAL DUE: 1,865.00

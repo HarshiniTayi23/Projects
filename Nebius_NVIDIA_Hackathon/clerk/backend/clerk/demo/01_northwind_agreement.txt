@@ -1,0 +1,12 @@
+NORTHWIND FIBER
+SERVICE AGREEMENT
+Account: NWF-448812
+Customer: Maria Alvarez
+Agreement date: 2026-01-10
+
+TERMS
+1. Plan: Fiber 500 Internet
+2. Monthly rate: $39.99 per month, locked until 2027-03-31.
+3. Included services: Fiber 500 Internet; Router rental
+4. Late fee: maximum $10.00 per late payment.
+5. Billing disputes must be raised within 60 days of the statement date.

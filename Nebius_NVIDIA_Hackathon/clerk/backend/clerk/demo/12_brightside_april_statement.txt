@@ -1,0 +1,17 @@
+BRIGHTSIDE ENERGY
+MONTHLY STATEMENT
+Account: BSE-20931
+Customer: Maria Alvarez
+Statement date: 2026-04-02
+Due date: 2026-04-22
+
+CHARGES
+Date       | Description | Qty | Unit price | Amount
+2026-03-31 | Fixed Bill Plan | 1 | 85.00 | 85.00
+2026-03-31 | Smart thermostat rental | 1 | 4.50 | 4.50
+2026-03-31 | Smart thermostat rental | 1 | 4.50 | 4.50
+2026-03-31 | Late payment fee | 1 | 35.00 | 35.00
+
+Subtotal: 129.00
+Tax (8.00%): 10.32
+TOTAL DUE: 149.32
