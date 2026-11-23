@@ -359,8 +359,9 @@ class ReservationService:
         if size < 1:
             return fail("INVALID_PARTY_SIZE", "Party size must be at least 1.")
         if size > min(MAX_PARTY, r["max_party_size"]):
-            larger = [self._summary(x) for x in self._restaurants
-                      if x["max_party_size"] >= size and "private_dining" in x["features"]][:3]
+            pool = [x for x in self._restaurants if x["max_party_size"] >= size and "private_dining" in x["features"]]
+            pool.sort(key=lambda x: (x["area"] != r["area"], x["cuisine"] != r["cuisine"], -x["rating"]))
+            larger = [self._summary(x) for x in pool[:3]]
             return fail("PARTY_TOO_LARGE", f"{r['name']} accepts online bookings up to {r['max_party_size']} guests.",
                         suggestion=("For groups above 20 please call our events team." if size > MAX_PARTY
                                     else "These venues have private dining for larger groups."),

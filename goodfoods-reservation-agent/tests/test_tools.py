@@ -178,3 +178,11 @@ def test_recommend_with_slot_skips_full_restaurants(svc, small):
 def test_list_options(svc):
     res = svc.list_options()
     assert len(res["cuisines"]) == 12 and len(res["areas"]) == 10
+
+
+def test_large_party_alternatives_prefer_same_area(svc, small):
+    res = book(svc, small, size=small["max_party_size"] + 1)
+    same_area = [x for x in svc._restaurants if x["area"] == small["area"] and "private_dining" in x["features"]
+                 and x["max_party_size"] > small["max_party_size"]]
+    if same_area:
+        assert res["alternative_restaurants"][0]["area"] == small["area"]

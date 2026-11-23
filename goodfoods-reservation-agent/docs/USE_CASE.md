@@ -96,7 +96,7 @@ Baselines are assumptions to be measured in the first 2 weeks of the pilot (shad
 
 **Costs:** build and integration ≈ ₹50 L (year 1); running costs ≈ ₹20 L per year (LLM inference ≈ ₹0.1 per conversation on an 8B model, hosting, WhatsApp/voice fees, a 1-person ops/QA role).
 
-**Payback period: under 2 months after full rollout.** Even if only the two most conservative levers (staff time and aggregator fees, ≈ ₹4.2 Cr) materialise, ROI is above 5× in year 1.
+**Payback period: under 2 months after full rollout.** Even if only the two most conservative levers (staff time and aggregator fees, ≈ ₹4.1 Cr) materialise, ROI is above 5× in year 1.
 
 ## 7. Scope
 
