@@ -1,0 +1,7 @@
+mcp==2.3.0
+httpx==0.28.1
+pydantic==2.14.4
+python-dotenv==1.2.4
+streamlit==1.67.0
+Faker==40.63.0
+pytest==9.2.0
