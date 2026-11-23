@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Any, Callable, Protocol
@@ -49,6 +50,11 @@ class AgentTurn:
 FALLBACK_LOOP = (
     "Sorry, I got a bit tangled up working that out. Could you tell me again what you'd like, "
     "for example the restaurant, date, time and number of guests?"
+)
+MAX_TOOL_RESULT_CHARS = 4000
+CODE_PATTERN = re.compile(r"\bGF-[A-Z0-9]{5,8}\b")
+UNGROUNDED_CODE_REPLY = (
+    "I haven't completed that booking yet. Would you like me to go ahead and confirm it now?"
 )
 FALLBACK_LLM_DOWN = (
     "I'm having trouble reaching my language service right now. Please try again in a moment."
@@ -123,13 +129,33 @@ class Agent:
                 log.exception("Tool %s crashed", name)
                 result = _error_json("TOOL_FAILURE", f"The {name} tool failed: {exc}")
 
+        if len(result) > MAX_TOOL_RESULT_CHARS:  # protect the small model's context window
+            result = result[:MAX_TOOL_RESULT_CHARS] + '..."} [truncated]'
         self.history.append({"role": "tool", "tool_call_id": call_id, "name": name, "content": result})
         ok = not _is_error(result)
         return ToolEvent(name, args, result, ok, time.perf_counter() - start)
 
     def _finish(self, reply: str, events: list[ToolEvent], error: str | None = None) -> AgentTurn:
+        reply = self._ground(reply)
         self.history.append({"role": "assistant", "content": reply})
+        log.info("turn %s", json.dumps({
+            "user": next((m["content"] for m in reversed(self.history) if m["role"] == "user"), "")[:200],
+            "tools": [{"name": e.name, "ok": e.ok, "ms": round(e.duration_s * 1000)} for e in events],
+            "error": error,
+        }))
         return AgentTurn(reply=reply, tool_events=events, error=error)
+
+    def _ground(self, reply: str) -> str:
+        """Guard against a classic small-model hallucination: announcing a
+        confirmation code that no tool ever returned."""
+        codes = set(CODE_PATTERN.findall(reply))
+        if not codes:
+            return reply
+        seen = " ".join(m.get("content") or "" for m in self.history if m["role"] in ("tool", "user"))
+        if all(c in seen for c in codes):
+            return reply
+        log.warning("Blocked ungrounded confirmation code(s) %s", codes - set(CODE_PATTERN.findall(seen)))
+        return UNGROUNDED_CODE_REPLY
 
     def _build_messages(self) -> list[dict[str, Any]]:
         prompt = self._system_prompt() if callable(self._system_prompt) else self._system_prompt

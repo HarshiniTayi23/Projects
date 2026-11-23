@@ -84,3 +84,42 @@ def test_history_is_trimmed_at_user_boundaries():
 def test_empty_input_does_not_call_model():
     agent, llm, _ = make()
     assert "help" in agent.chat("   ").reply and llm.calls == []
+
+
+def test_hallucinated_confirmation_code_is_blocked():
+    from agent.agent import UNGROUNDED_CODE_REPLY
+    agent, _, _ = make(LLMResponse("All set! Your confirmation code is GF-ABCDE."))
+    assert agent.chat("book it").reply == UNGROUNDED_CODE_REPLY
+
+
+def test_real_confirmation_code_is_allowed():
+    class BookingTools(ToyTools):
+        def call(self, name, arguments):
+            return json.dumps({"ok": True, "confirmation_code": "GF-K7P2Q"})
+    llm = ScriptedLLM(LLMResponse(None, [tool_call("get_time", {"city": "x"})]), LLMResponse("Booked: GF-K7P2Q"))
+    agent = Agent(llm, BookingTools(), "sys", CFG)
+    assert agent.chat("book").reply == "Booked: GF-K7P2Q"
+
+
+def test_code_typed_by_user_is_not_flagged():
+    agent, _, _ = make(LLMResponse("Let me look up GF-7K2PQ for you. What's the phone number?"))
+    assert "GF-7K2PQ" in agent.chat("status of GF-7K2PQ?").reply
+
+
+def test_huge_tool_result_is_truncated():
+    class BigTools(ToyTools):
+        def call(self, name, arguments):
+            return json.dumps({"ok": True, "blob": "x" * 20000})
+    llm = ScriptedLLM(LLMResponse(None, [tool_call("get_time", {"city": "x"})]), LLMResponse("ok"))
+    agent = Agent(llm, BigTools(), "sys", CFG)
+    agent.chat("go")
+    assert len(llm.calls[1][-1]["content"]) < 4100
+
+
+def test_tool_exception_is_contained():
+    class Boom(ToyTools):
+        def call(self, name, arguments):
+            raise RuntimeError("db locked")
+    llm = ScriptedLLM(LLMResponse(None, [tool_call("get_time", {"city": "x"})]), LLMResponse("Sorry, try again."))
+    turn = Agent(llm, Boom(), "sys", CFG).chat("go")
+    assert turn.reply == "Sorry, try again." and "TOOL_FAILURE" in turn.tool_events[0].result
