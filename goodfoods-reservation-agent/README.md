@@ -258,7 +258,7 @@ Tool calls and results below are **real outputs** from the system (seeded data, 
 
 ## Business strategy summary
 
-Full document: [`docs/USE_CASE.md`](docs/USE_CASE.md)
+Full document, following the assignment use-case template (Goal, Success Criteria, Use case, Bot flow, State Transition Diagram, Bot Features, Rollout, Key Challenges): [`docs/USE_CASE.md`](docs/USE_CASE.md)
 
 - **Problem:** peak-hour phone overload, each outlet selling only its own tables, 10–15% no-shows, aggregator fees, and no first-party guest data.
 - **Non-obvious opportunities:** cross-outlet demand routing, off-peak demand shaping, no-show reduction, guest CRM, occasion upsell, event leads, forecasting for staffing and purchasing, Indic-language access.
